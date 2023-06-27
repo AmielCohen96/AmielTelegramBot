@@ -1,0 +1,286 @@
+package org.example;
+
+import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.Update;
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class AmielBot extends TelegramLongPollingBot {
+    private final List<Long> chatIds;
+
+    public AmielBot()
+    {
+        this.chatIds=new ArrayList<>();
+    }
+    @Override
+    public String getBotUsername() {
+        return "AmielcBot";
+    }
+
+    @Override
+    public String getBotToken() {
+        return "6217670316:AAE3v9ThbOm8eQg-p0YRODzTMz7lOsApFE4";
+    }
+
+    @Override
+    public void onUpdateReceived(Update update) {
+        long chatId;
+        String callbackData;
+        SendMessage message =new SendMessage();
+        chatId=this.getChatId(update);
+        message.setChatId(chatId);
+        if (update.hasMessage() && update.getMessage().hasText()){
+            if (!this.chatIds.contains(chatId))
+            {
+                message.setText("What kind of activity are you interested in?");
+                InlineKeyboardButton jokes = new InlineKeyboardButton("Jokes");
+                jokes.setCallbackData("jokes");
+                InlineKeyboardButton cats =new InlineKeyboardButton("Cats facts");
+                cats.setCallbackData("cats");
+                InlineKeyboardButton countries =new InlineKeyboardButton("Countries");
+                countries.setCallbackData("countries");
+                List<InlineKeyboardButton>topRow= Arrays.asList(jokes, cats, countries);
+                List<List<InlineKeyboardButton>> keyboard = List.of(topRow);
+                InlineKeyboardMarkup inlineKeyboardMarkup=new InlineKeyboardMarkup();
+                inlineKeyboardMarkup.setKeyboard(keyboard);
+                message.setReplyMarkup(inlineKeyboardMarkup);
+                this.chatIds.add(chatId);
+            }else {
+                message.setText("Hi again, what kind of activity are you interested now?");
+                InlineKeyboardButton jokes = new InlineKeyboardButton("Jokes");
+                jokes.setCallbackData("jokes");
+                InlineKeyboardButton cats =new InlineKeyboardButton("Cats facts");
+                cats.setCallbackData("cats");
+                InlineKeyboardButton countries =new InlineKeyboardButton("Countries information");
+                countries.setCallbackData("countries");
+                List<InlineKeyboardButton>topRow= Arrays.asList(jokes, cats, countries);
+                List<List<InlineKeyboardButton>> keyboard = List.of(topRow);
+                InlineKeyboardMarkup inlineKeyboardMarkup=new InlineKeyboardMarkup();
+                inlineKeyboardMarkup.setKeyboard(keyboard);
+                message.setReplyMarkup(inlineKeyboardMarkup);
+            }
+            try {
+                execute(message);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        else if (update.hasCallbackQuery()) {
+            callbackData = update.getCallbackQuery().getData();
+            if(callbackData.equals("cats")){
+                catsMenu();
+            }
+            else if(callbackData.equals("jokes")){
+                jokesMenu();
+            }
+            else if(callbackData.equals("countries")){
+                countriesMenu();
+            }
+        }
+    }
+objectMapper.readValue(json, new TypeReference<>(){});
+
+
+
+
+
+    private long getChatId (Update update) {
+        long chatId = 0;
+        if (update.getMessage() != null){
+            chatId = update.getMessage().getChatId();
+        } else {
+            chatId =update.getCallbackQuery().getMessage().getChatId();
+        }
+        return chatId;
+    }
+
+    private void catsMenu (){
+        System.out.println("catsMenu");
+    }
+    private void jokesMenu (){
+        SendMessage message =new SendMessage();
+        message.setText("One part or Tow parts?");
+        InlineKeyboardButton jokes = new InlineKeyboardButton("One");
+        jokes.setCallbackData("one");
+        InlineKeyboardButton cats =new InlineKeyboardButton("Two");
+        cats.setCallbackData("two");
+        try {
+            execute(message);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        String callBack = upd
+    }
+    private void countriesMenu (){
+        System.out.println("countriesMenu");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+switch (choice) {
+            case 1:
+                if (update.hasMessage() && update.getMessage().hasText()){
+                    if (!this.chatIds.contains(chatId))
+                    {
+                        message.setText("What kind of activity are you interested in?");
+                        InlineKeyboardButton jokes = new InlineKeyboardButton("Jokes");
+                        jokes.setCallbackData("jokes");
+                        InlineKeyboardButton cats =new InlineKeyboardButton("Cats facts");
+                        cats.setCallbackData("cats");
+                        InlineKeyboardButton countries =new InlineKeyboardButton("Countries");
+                        countries.setCallbackData("countries");
+                        List<InlineKeyboardButton>topRow= Arrays.asList(jokes, cats, countries);
+                        List<List<InlineKeyboardButton>> keyboard = List.of(topRow);
+                        InlineKeyboardMarkup inlineKeyboardMarkup=new InlineKeyboardMarkup();
+                        inlineKeyboardMarkup.setKeyboard(keyboard);
+                        message.setReplyMarkup(inlineKeyboardMarkup);
+                        this.chatIds.add(chatId);
+                    }else {
+                        message.setText("Hi again, what kind of activity are you interested now?");
+                        InlineKeyboardButton jokes = new InlineKeyboardButton("Jokes");
+                        jokes.setCallbackData("jokes");
+                        InlineKeyboardButton cats =new InlineKeyboardButton("Cats facts");
+                        cats.setCallbackData("cats");
+                        InlineKeyboardButton countries =new InlineKeyboardButton("Countries information");
+                        countries.setCallbackData("countries");
+                        List<InlineKeyboardButton>topRow= Arrays.asList(jokes, cats, countries);
+                        List<List<InlineKeyboardButton>> keyboard = List.of(topRow);
+                        InlineKeyboardMarkup inlineKeyboardMarkup=new InlineKeyboardMarkup();
+                        inlineKeyboardMarkup.setKeyboard(keyboard);
+                        message.setReplyMarkup(inlineKeyboardMarkup);
+                    }
+                    try {
+                        execute(message);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+                else if (update.hasCallbackQuery()) {
+                    callbackData = update.getCallbackQuery().getData();
+                    if(callbackData.equals("cats")){
+                        catsMenu();
+                        this.choice = 2;
+                    }
+                    else if(callbackData.equals("jokes")){
+                        jokesMenu(chatId);
+                    }
+                    else if(callbackData.equals("countries")){
+                        countriesMenu();
+                        this.choice = 4;
+                    }
+                }
+                break;
+            case 2:
+                if (update.hasMessage() && update.getMessage().hasText()){
+                    message.setText("One part or Tow parts?");
+                    InlineKeyboardButton one = new InlineKeyboardButton("One");
+                    one.setCallbackData("one");
+                    InlineKeyboardButton two =new InlineKeyboardButton("Two");
+                    two.setCallbackData("two");
+                    List<InlineKeyboardButton>topRow= Arrays.asList(one, two);
+                    List<List<InlineKeyboardButton>> keyboard = List.of(topRow);
+                    InlineKeyboardMarkup inlineKeyboardMarkup=new InlineKeyboardMarkup();
+                    inlineKeyboardMarkup.setKeyboard(keyboard);
+                    message.setReplyMarkup(inlineKeyboardMarkup);
+                    try {
+                        execute(message);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+                else if (update.hasCallbackQuery()) {
+                    callbackData = update.getCallbackQuery().getData();
+                    if(callbackData.equals("one")){
+                        this.choice = 3;
+                    }
+                    else if(callbackData.equals("two")){
+                        this.choice = 4;
+                    }
+                }
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+        }
+
+
+
+        //    private void catBreed(long chatId){
+        //        SendMessage message = new SendMessage();
+        //        message.setChatId(chatId);
+        //        try {
+        //            GetRequest getRequest = Unirest.get("https://catfact.ninja/fact?max_length=140");
+        //            HttpResponse<String> response = getRequest.asString();
+        //            String json = response.getBody();
+        //            ObjectMapper objectMapper = new ObjectMapper();
+        //            CatFact catFact = objectMapper.readValue(json, CatFact.class);
+        //            message.setText(catFact.getFact());
+        //        }catch (UnirestException | JsonProcessingException e){
+        //            throw new RuntimeException(e);
+        //        }
+        //        try {
+        //            execute(message);
+        //        }catch (Exception e){
+        //            e.printStackTrace();
+        //        }
+        //    }
+
+
+        new Thread(() ->{
+                    while (true){
+                        try {
+                            GetRequest getRequest = Unirest.get("https://restcountries.com/v2/name/"+this.country);
+                            HttpResponse<String> response = getRequest.asString();
+                            String json = response.getBody();
+                            ObjectMapper objectMapper = new ObjectMapper();
+                            Countries countries  = objectMapper.readValue(json, Countries.class);
+                            if(callbackData.equals("population")){
+                                message.setText("The "+ callbackData + " of " + this.country + " is " + countries.getPopulation());
+                            }
+                            if(callbackData.equals("population")){
+                                message.setText("The "+ callbackData + " of " + this.country + " is " + countries.getCapital());
+                            }
+                        }catch (UnirestException | JsonProcessingException e){
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }).start();
+
+
+
+                private void catsMenu (long chatId){
+                        SendMessage message = new SendMessage();
+                        message.setChatId(chatId);
+                        message.setText("Choose one category?");
+                        InlineKeyboardButton breed = new InlineKeyboardButton("Random breed");
+                        breed.setCallbackData("breed");
+                        InlineKeyboardButton fact =new InlineKeyboardButton("Random fact");
+                        fact.setCallbackData("fact");
+                        List<InlineKeyboardButton>topRow= Arrays.asList(breed, fact);
+                        List<List<InlineKeyboardButton>> keyboard = List.of(topRow);
+                        InlineKeyboardMarkup inlineKeyboardMarkup=new InlineKeyboardMarkup();
+                        inlineKeyboardMarkup.setKeyboard(keyboard);
+                        message.setReplyMarkup(inlineKeyboardMarkup);
+                        try {
+                            execute(message);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
