@@ -78,13 +78,11 @@ public class AmielBot extends TelegramLongPollingBot{
         }
         if(!update.hasCallbackQuery()){
         userName = update.getMessage().getFrom().getFirstName();
-            action= new Action();
-            action.setUserName(userName);
-            action.setDate(update.getMessage().getDate()+"");
-            action.setActivityName("message");
+        action= new Action();
+        action.setUserName(userName);
+        action.setDate(update.getMessage().getDate()+"");
+        action.setActivityName("message");
         if(!this.oldUser){
-
-
             Users newUser = new Users(userName, 0, chatId);
             users.add(newUser);
             this.oldUser = false;
@@ -111,7 +109,7 @@ public class AmielBot extends TelegramLongPollingBot{
         else if (update.hasCallbackQuery()) {
             callbackData = update.getCallbackQuery().getData();
             action=new Action();
-                userName=update.getCallbackQuery().getFrom().getUserName();
+            userName=update.getCallbackQuery().getFrom().getUserName();
             action.setUserName(userName);
             action.setDate(update.getCallbackQuery().getMessage().getDate()+"");
             action.setActivityName(callbackData);
