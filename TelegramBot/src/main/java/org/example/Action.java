@@ -20,8 +20,8 @@ public class Action {
     @Override
     public String toString() {
         return "User: " + userName +
-                " | Date: | " + date +
-                " | Activity: " + activityName+" |";
+                "   |   Date: " + date +
+                "   |   Activity: " + activityName;
     }
 
 

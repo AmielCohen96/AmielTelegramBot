@@ -11,17 +11,17 @@ public class Stats extends JPanel{
         setBorder(BorderFactory.createTitledBorder("Stats"));
         setLayout(null);
         add(bestActive);
-        bestActive.setBounds(10, 50, 500, 30);
-        bestActive.setFont(new Font("David", Font.PLAIN, 30));
+        bestActive.setBounds(Constant.X_START, 100, Constant.WIDTH, Constant.HEIGHT);
+        bestActive.setFont(new Font("David", Font.PLAIN, Constant.FONT_SIZE));
         add(totalRequests);
-        totalRequests.setBounds(10, bestActive.getY() + 50, 500, 30);
-        totalRequests.setFont(new Font("David", Font.PLAIN, 30));
+        totalRequests.setBounds(Constant.X_START, bestActive.getY() + 50, Constant.WIDTH, Constant.HEIGHT);
+        totalRequests.setFont(new Font("David", Font.PLAIN, Constant.FONT_SIZE));
         add(usersNumber);
-        usersNumber.setBounds(10, totalRequests.getY() + 50, 500, 30);
-        usersNumber.setFont(new Font("David", Font.PLAIN, 30));
+        usersNumber.setBounds(Constant.X_START, totalRequests.getY() + 50, Constant.WIDTH, Constant.HEIGHT);
+        usersNumber.setFont(new Font("David", Font.PLAIN, Constant.FONT_SIZE));
         add(mostActive);
-        mostActive.setBounds(10, usersNumber.getY() + 50, 500, 30);
-        mostActive.setFont(new Font("David", Font.PLAIN, 30));
+        mostActive.setBounds(Constant.X_START, usersNumber.getY() + 50, Constant.WIDTH, Constant.HEIGHT);
+        mostActive.setFont(new Font("David", Font.PLAIN, Constant.FONT_SIZE));
 
     }
 
