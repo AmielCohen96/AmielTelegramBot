@@ -9,4 +9,14 @@ public class Constant {
     public static final int CHECKBOX_FONT_SIZE = 20;
     public static final int CHECKBOX_WIDTH = 400;
 
+
+    public static void sleep (int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
+
